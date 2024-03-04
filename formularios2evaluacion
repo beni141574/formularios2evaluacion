@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Alta cliente</h1>
+    <form action="alta-cliente-php"
+    onsubmit="return validaformulario()">
+    <p>
+<label for="nombre">nombre</label>
+<input type="text" name="nombre" id="nombre"
+placeholder="Escriba su nombre">
+</p>
+<p>
+    <label for="edad">edad</label>
+    <input type="number" name="edad" id="edad"
+    placeholder="Escriba su edad">
+    </p>
+    <p>
+        <label for="provincia">provincia</label>
+        <select name="provincia" id="provincia">
+        <option value="elija">Elija una...</option>
+        <option value="cr">Ciudad Real</option>
+        <option value="ab">Albacete</option>
+        <option value="to">Toledo</option>
+        <option value="cu">Cuenca</option>
+        </select>
+    </p>
+    <p>
+        <label for="acepto">
+            He leído y acepto las condiciones
+        </label><input type="checkbox" id="acepto" name="acepto">
+    </p>
+    <p>
+     <label for="contraseña">contraseña</label>
+     <input type="password" id="contraseña" name="contraseña"><button onclick="muestracontrasena()">ver</button>
+    </p>
+    <p>
+    <label for="compruebacontraseña">comprueba la contraseña</label>
+    <input type="password" id="compruebacontraseña" name="compruebacontraseña">
+    </p>
+<input type="submit" value="Dar de alta">
+</form>
+
+<script>
+
+function muestracontrasena(){
+let contraseña=document.getElementById("contraseña");
+contraseña.type="text";
+}
+
+
+
+function validaformulario(){
+    let nombre=document.getElementById("nombre");
+    if(nombre.value.lenght<6){
+    alert(" La longitud mínima del nombre es de 6 caracteres");
+    nombre.focus();
+    return false;
+    }
+    let edad=document.getElementById("edad");
+    if(edad.value<18){
+    alert("La edad minima es de 18 añoss ");
+    edad.focus();
+    return false;
+    }
+    let provincia=document.getElementById("provincia");
+    if(provincia.value=="elija"){
+    alert("Debe seleccionar una provincia");
+    provincia.focus();
+    return false;
+    }
+    let acepto=document.getElementById("acepto");
+    if(acepto.checked==false){
+    alert("Debe aceptar las condiciones");
+    acepto.focus();
+    return false;
+    }
+    let contraseña=document.getElementById("contraseña");
+    let compruebacontraseña=document.getElementById("compruebacontraseña")
+    if(contraseña.value!=compruebacontraseña.value){
+    alert("Debe ser la misma contraseña");
+    contraseña.focus();
+    return false;
+    }
+    alert("Datos Correctos. Procede a enviar ");
+    return true;
+}
+
+</script>
+
+</body>
+</html>
